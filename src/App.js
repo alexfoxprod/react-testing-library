@@ -1,22 +1,43 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
+const getUser = () => Promise.resolve({ id: 1, name: "Dmytro" });
 const Search = ({ value, onChange, children }) => {
-  <div>
-    <label htmlFor="search">{children}</label>
-    <input type="text" id="search" value={value} onChange={onChange} />
-  </div>;
+  return (
+    <div>
+      <img src="" alt="search image" />
+      <label htmlFor="search">{children}</label>
+      <input
+        placeholder="search text..."
+        type="text"
+        id="search"
+        value={value}
+        onChange={onChange}
+      />
+    </div>
+  );
 };
+
 function App() {
   const [search, setSearch] = useState("");
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    const loadUser = async () => {
+      const user = await getUser();
+      setUser(user);
+    };
+    loadUser();
+  }, []);
 
   const handleChange = ({ target }) => {
     setSearch(target.value);
   };
   return (
     <div>
+      {user && <h2>Logged in as {user.name}</h2>}
       <Search value={search} onChange={handleChange}>
-        Search:
+        SEARCH:
       </Search>
       <p>Searches for {search ? search : "..."}</p>
     </div>
