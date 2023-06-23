@@ -5,7 +5,7 @@ const getUser = () => Promise.resolve({ id: 1, name: "Dmytro" });
 const Search = ({ value, onChange, children }) => {
   return (
     <div>
-      <img src="" alt="search image" />
+      <img className="image" src="" alt="search image" />
       <label htmlFor="search">{children}</label>
       <input
         placeholder="search text..."
