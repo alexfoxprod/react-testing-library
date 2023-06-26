@@ -4,29 +4,29 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 
-jest.mock("axios");
+// jest.mock("axios");
 
-const hits = [
-  {
-    objectID: "1",
-    title: "Angular",
-  },
-  {
-    objectID: "2",
-    title: "React",
-  },
-];
-describe("App", () => {
-  it("fetching new from API", async () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ data: { hits } }));
-    const { getByRole, findAllByRole } = render(<App />);
-    userEvent.click(getByRole("button"));
-    const items = await findAllByRole("listitem");
-    expect(items).toHaveLength(2);
+// const hits = [
+//   {
+//     objectID: "1",
+//     title: "Angular",
+//   },
+//   {
+//     objectID: "2",
+//     title: "React",
+//   },
+// ];
+// describe("App", () => {
+//   it("fetching new from API", async () => {
+//     axios.get.mockImplementationOnce(() => Promise.resolve({ data: { hits } }));
+//     const { getByRole, findAllByRole } = render(<App />);
+//     userEvent.click(getByRole("button"));
+//     const items = await findAllByRole("listitem");
+//     expect(items).toHaveLength(2);
 
-    expect(axios.get).toHaveBeenCalledTimes(1);
-  });
-});
+//     expect(axios.get).toHaveBeenCalledTimes(1);
+//   });
+// });
 
 // test("renders learn react link", () => {
 //   const { asFragment } = render(<App />);
